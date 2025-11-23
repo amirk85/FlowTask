@@ -2,14 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react"; // npm install lucide-react
-import { ThemeToggle } from "@/components/theme-toggle"; // You'll create this next
-import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Features", href: "#features" },
-  { name: "How it Works", href: "#how-it-works" },
   { name: "Pricing", href: "#pricing" },
 ];
 
@@ -25,20 +21,18 @@ export function Navbar() {
 
   return (
     <nav
-      className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "glass shadow-lg py-3" : "bg-transparent py-5",
-      )}
+      className={`fixed top-0 z-50 w-full transition-all ${
+        scrolled
+          ? "bg-background/80 backdrop-blur-sm border-b border-border"
+          : "bg-transparent"
+      }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container-custom flex items-center justify-between h-16">
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-bold text-xl tracking-tight"
+          className="font-display font-bold text-xl tracking-tight"
         >
-          <div className="bg-brand-teal p-1.5 rounded-lg text-white">
-            <Zap size={20} fill="currentColor" />
-          </div>
           FlowTask
         </Link>
 
@@ -48,67 +42,59 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-brand-teal transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {link.name}
             </Link>
           ))}
-        </div>
-
-        {/* Actions */}
-        <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
-          <Link href="/login" className="text-sm font-medium hover:opacity-80">
+          <Link href="/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Log in
           </Link>
           <Link
             href="/signup"
-            className="bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold hover:brightness-110 transition-all shadow-[0_0_20px_-5px_var(--color-brand-teal)]"
+            className="btn btn-primary"
           >
-            Start Free Trial
+            Start Free
           </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X /> : <Menu />}
+        <button
+          className="md:hidden p-2"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-white/10 overflow-hidden"
-          >
-            <div className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="h-px bg-border my-2" />
-              <Link href="/login" className="text-lg font-medium">
-                Log in
-              </Link>
+      {isOpen && (
+        <div className="md:hidden border-t border-border bg-background">
+          <div className="flex flex-col p-6 gap-4 container-custom">
+            {navLinks.map((link) => (
               <Link
-                href="/signup"
-                className="text-lg font-medium text-brand-teal"
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-base font-medium"
               >
-                Start Free Trial
+                {link.name}
               </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <div className="divider my-2" />
+            <Link href="/login" className="text-base font-medium">
+              Log in
+            </Link>
+            <Link
+              href="/signup"
+              className="text-base font-medium text-accent"
+            >
+              Start Free
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

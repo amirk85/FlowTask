@@ -1,75 +1,56 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { Star, Quote } from "lucide-react"
+"use client";
 
 const testimonials = [
   {
-    quote: "FlowTask completely changed how we ship software. The AI scheduling is actually useful, unlike other tools we've tried.",
+    quote: "FlowTask changed how we ship. The AI scheduling actually works, unlike other tools we tried.",
     author: "Sarah Jenkins",
-    role: "CTO at TechStart",
-    avatar: "bg-purple-500",
-    rating: 5
+    role: "CTO, TechStart",
   },
   {
-    quote: "I was skeptical about the 'AI workflows' claim, but it genuinely saves me about 10 hours a week on admin work.",
+    quote: "Saves me 10 hours a week on admin work. The automated reporting is genuinely useful.",
     author: "Marcus Chen",
-    role: "Product Manager at DevCorp",
-    avatar: "bg-brand-teal",
-    rating: 5
+    role: "PM, DevCorp",
   },
   {
-    quote: "The best UI I've used in a project management tool. It feels like it was designed by people who actually write code.",
+    quote: "Best UI in project management. Built by people who actually write code.",
     author: "Elena Rodriguez",
-    role: "Frontend Lead at Designify",
-    avatar: "bg-brand-blue",
-    rating: 5
-  }
-]
+    role: "Frontend Lead, Designify",
+  },
+];
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Loved by <span className="text-brand-teal">Builders</span></h2>
-          <p className="text-muted-foreground text-lg">Join 5,000+ teams shipping faster with FlowTask.</p>
+    <section className="section">
+      <div className="container-custom">
+        <div className="mb-16">
+          <h2 className="font-display font-bold text-5xl md:text-6xl mb-6">
+            Loved by builders
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="p-8 rounded-2xl bg-card border border-border shadow-sm relative"
+              className="p-8 border border-border rounded-lg bg-background"
             >
-              <Quote className="absolute top-8 right-8 text-brand-teal/20" size={40} />
-              
-              <div className="flex gap-1 mb-6">
-                {[...Array(item.rating)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-
-              <p className="text-lg mb-8 relative z-10">"{item.quote}"</p>
+              <p className="text-lg mb-8 leading-relaxed">
+                "{item.quote}"
+              </p>
 
               <div className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-full ${item.avatar} flex items-center justify-center text-white font-bold text-xl`}>
+                <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center font-bold text-xl">
                   {item.author[0]}
                 </div>
                 <div>
-                  <div className="font-bold">{item.author}</div>
+                  <div className="font-semibold">{item.author}</div>
                   <div className="text-sm text-muted-foreground">{item.role}</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

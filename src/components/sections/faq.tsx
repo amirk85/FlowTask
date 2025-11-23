@@ -1,35 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Plus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How does the AI scheduling actually work?",
+    question: "How does AI scheduling work?",
     answer:
-      "Our AI analyzes your team's historical velocity and GitHub activity to estimate task complexity. It then auto-assigns tasks based on real availability, not just empty calendar slots.",
+      "FlowTask analyzes your team's historical velocity and GitHub activity to estimate task complexity. It assigns realistic deadlines based on actual availability, not empty calendar slots.",
   },
   {
-    question: "Can I import data from Jira or Trello?",
+    question: "Can I import from Jira or Trello?",
     answer:
-      "Yes! We offer one-click migrations for Jira, Trello, Asana, and Notion. We preserve all your comments, attachments, and status history.",
+      "Yes. One-click migrations from Jira, Trello, Asana, and Notion. We preserve all comments, attachments, and history.",
   },
   {
     question: "Is my data secure?",
     answer:
-      "Absolutely. We are SOC2 Type II compliant and encrypt all data at rest and in transit (AES-256). We perform daily backups and regular penetration testing.",
+      "SOC2 Type II compliant. All data encrypted at rest (AES-256) and in transit. Daily backups and regular penetration testing.",
   },
   {
     question: "Do you offer a free trial?",
     answer:
-      "Yes, the Pro plan comes with a 14-day free trial. No credit card is required to start. You can downgrade to the Free plan at any time.",
+      "14-day free trial on the Pro plan. No credit card required. Downgrade to Free anytime.",
   },
   {
-    question: "Does FlowTask work for non-technical teams?",
+    question: "Does it work for non-technical teams?",
     answer:
-      "While we optimize for software teams (with GitHub/GitLab integrations), marketing and design teams love our visual Kanban boards and automated reporting features.",
+      "While optimized for software teams, marketing and design teams use our visual Kanban and automated reporting features.",
   },
 ];
 
@@ -37,11 +35,11 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">
-            Frequently Asked Questions
+    <section className="section border-y border-border bg-muted">
+      <div className="container-custom max-w-3xl">
+        <div className="mb-16">
+          <h2 className="font-display font-bold text-5xl md:text-6xl mb-6">
+            FAQ
           </h2>
         </div>
 
@@ -49,35 +47,26 @@ export function FAQ() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-border rounded-xl bg-card overflow-hidden"
+              className="border border-border rounded-lg bg-background overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left font-medium"
+                className="w-full flex items-center justify-between p-6 text-left font-semibold hover:bg-muted/50 transition-colors"
               >
-                {faq.question}
-                <ChevronDown
-                  className={cn(
-                    "transition-transform duration-300 text-muted-foreground",
-                    openIndex === index ? "rotate-180" : "rotate-0",
-                  )}
+                <span>{faq.question}</span>
+                <Plus
+                  size={20}
+                  className={`shrink-0 ml-4 transition-transform ${
+                    openIndex === index ? "rotate-45" : ""
+                  }`}
                 />
               </button>
 
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {openIndex === index && (
+                <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </div>
+              )}
             </div>
           ))}
         </div>

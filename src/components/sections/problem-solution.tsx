@@ -1,112 +1,66 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { XCircle, CheckCircle2 } from "lucide-react";
+import { X, Check } from "lucide-react";
+
+const problems = [
+  "Context switching between 5+ tools daily",
+  "No visibility into team workload",
+  "Status meetings that could be avoided",
+  "Manual reporting and updates",
+];
+
+const solutions = [
+  { title: "Unified workspace", desc: "Tasks, docs, chat in one place" },
+  { title: "Real-time visibility", desc: "See who's working on what, always" },
+  { title: "Auto status updates", desc: "AI generates reports for you" },
+  { title: "Smart scheduling", desc: "Realistic deadlines, not wishful thinking" },
+];
 
 export function ProblemSolution() {
   return (
-    <section className="py-24 bg-muted/30 border-y border-border">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* The Problem (Left) */}
-          <div className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold mb-6">
-                Stop managing work in{" "}
-                <span className="text-red-500 decoration-red-500/30 underline underline-offset-4">
-                  chaos mode
-                </span>
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Most teams are stuck in endless status meetings and drowning in
-                Slack messages. It's not your fault—your tools are broken.
-              </p>
-
-              <div className="space-y-4">
-                {[
-                  "Information scattered across 5+ apps",
-                  "No visibility into who is working on what",
-                  "Projects constantly missing deadlines",
-                  "Team burnout from manual status updates",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 text-muted-foreground"
-                  >
-                    <XCircle className="text-red-500 shrink-0" size={20} />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+    <section className="section border-y border-border bg-muted">
+      <div className="container-custom">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+          {/* Problem */}
+          <div>
+            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">
+              The problem
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
+              Most teams waste hours every week on tool sprawl and coordination overhead.
+            </p>
+            <div className="space-y-4">
+              {problems.map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <X className="text-foreground shrink-0 mt-1" size={20} strokeWidth={2.5} />
+                  <span className="text-base">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* The Solution (Right) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            {/* Glass Card Effect */}
-            <div className="glass rounded-2xl p-8 md:p-10 border border-brand-teal/20 shadow-2xl">
-              <div className="absolute top-0 right-0 p-4 opacity-20">
-                <svg
-                  width="100"
-                  height="100"
-                  viewBox="0 0 100 100"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="50"
-                    fill="currentColor"
-                    className="text-brand-teal"
-                  />
-                </svg>
-              </div>
-
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <span className="bg-brand-teal text-white p-1 rounded">
-                  <CheckCircle2 size={20} />
-                </span>
-                The FlowTask Way
-              </h3>
-
-              <div className="space-y-6">
-                <div className="bg-background/50 p-4 rounded-lg border border-border/50">
-                  <h4 className="font-semibold text-brand-teal mb-1">
-                    Centralized Source of Truth
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    Tasks, Docs, and Chat in one unified interface.
-                  </p>
+          {/* Solution */}
+          <div>
+            <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">
+              The solution
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
+              FlowTask consolidates your workflow into one fast, intelligent platform.
+            </p>
+            <div className="space-y-6">
+              {solutions.map((item, i) => (
+                <div key={i} className="flex items-start gap-4 p-4 border border-border bg-background rounded-lg">
+                  <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center shrink-0 mt-0.5">
+                    <Check size={14} className="text-white" strokeWidth={3} />
+                  </div>
+                  <div>
+                    <div className="font-semibold mb-1">{item.title}</div>
+                    <div className="text-sm text-muted-foreground">{item.desc}</div>
+                  </div>
                 </div>
-                <div className="bg-background/50 p-4 rounded-lg border border-border/50">
-                  <h4 className="font-semibold text-brand-teal mb-1">
-                    AI-Driven Insights
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    Predict delays weeks before they happen.
-                  </p>
-                </div>
-                <div className="bg-background/50 p-4 rounded-lg border border-border/50">
-                  <h4 className="font-semibold text-brand-teal mb-1">
-                    Automated Reporting
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    Weekly summaries generated for you automatically.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
