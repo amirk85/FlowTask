@@ -92,16 +92,22 @@ export function Pricing() {
           {tiers.map((tier, index) => (
             <div
               key={tier.name}
-              className={`relative p-8 rounded-lg border flex flex-col ${
+              className={`relative p-8 rounded-lg border flex flex-col transition-all hover:shadow-lg ${
                 tier.popular
-                  ? "border-accent bg-accent-light"
-                  : "border-border bg-background"
+                  ? "border-accent border-2 bg-background shadow-xl scale-105"
+                  : "border-border bg-background hover:border-muted-foreground/20"
               }`}
             >
+              {/* Popular Badge */}
               {tier.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg z-10">
                   Most Popular
                 </div>
+              )}
+
+              {/* Accent Bar for Popular Tier */}
+              {tier.popular && (
+                <div className="absolute top-0 left-0 right-0 h-1 bg-accent rounded-t-lg"></div>
               )}
 
               <div className="mb-8">
@@ -115,12 +121,23 @@ export function Pricing() {
                   </span>
                   <span className="text-muted-foreground">/mo</span>
                 </div>
+                {tier.price.monthly > 0 && isAnnual && (
+                  <div className="text-xs text-muted-foreground mt-2">
+                    Billed annually (${tier.price.annual * 12}/year)
+                  </div>
+                )}
               </div>
 
               <ul className="space-y-3 mb-8 flex-1">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-3 text-sm">
-                    <Check size={16} className="shrink-0" strokeWidth={2.5} />
+                    <div className={`rounded-full p-0.5 ${tier.popular ? 'bg-accent' : 'bg-muted'}`}>
+                      <Check
+                        size={14}
+                        className={tier.popular ? 'text-white' : 'text-foreground'}
+                        strokeWidth={3}
+                      />
+                    </div>
                     {feature}
                   </li>
                 ))}
@@ -129,14 +146,30 @@ export function Pricing() {
               <button
                 className={`w-full py-3 rounded-lg font-semibold transition-all ${
                   tier.popular
-                    ? "btn btn-primary"
-                    : "btn btn-secondary"
+                    ? "bg-accent text-white hover:bg-accent-hover shadow-md"
+                    : "bg-muted hover:bg-muted-foreground/10 border border-border"
                 }`}
               >
                 {tier.cta}
               </button>
+
+              {/* Visual Enhancement - Corner Detail */}
+              {tier.popular && (
+                <div className="absolute bottom-4 right-4 opacity-5">
+                  <svg width="40" height="40" viewBox="0 0 40 40">
+                    <circle cx="20" cy="20" r="15" fill="currentColor" className="text-accent" />
+                  </svg>
+                </div>
+              )}
             </div>
           ))}
+        </div>
+
+        {/* Trust Signal */}
+        <div className="text-center mt-16">
+          <p className="text-sm text-muted-foreground">
+            14-day free trial on Pro plan • No credit card required • Cancel anytime
+          </p>
         </div>
       </div>
     </section>
