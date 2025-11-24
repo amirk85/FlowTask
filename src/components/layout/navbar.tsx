@@ -52,7 +52,7 @@ export function Navbar() {
           </Link>
           <Link
             href="/signup"
-            className="btn btn-primary"
+            className="btn btn-primary px-1 py-2"
           >
             Start Free
           </Link>

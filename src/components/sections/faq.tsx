@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 
-const faqs = [
+const FAQs = [
   {
     question: "How does AI scheduling work?",
     answer:
@@ -32,8 +32,6 @@ const faqs = [
 ];
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
     <section className="section border-y border-border bg-muted">
       <div className="container-custom max-w-3xl">
@@ -44,33 +42,48 @@ export function FAQ() {
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-border rounded-lg bg-background overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left font-semibold hover:bg-muted/50 transition-colors"
-              >
-                <span>{faq.question}</span>
-                <Plus
-                  size={20}
-                  className={`shrink-0 ml-4 transition-transform ${
-                    openIndex === index ? "rotate-45" : ""
-                  }`}
-                />
-              </button>
-
-              {openIndex === index && (
-                <div className="px-6 py-6 text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
+          {FAQs.map((faq, index) => (
+            <FAQCard key={index} question={faq.question} answer={faq.answer} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function FAQCard({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState<boolean>(false);
+  return (
+    <div
+      key={question}
+      className="border border-border rounded-lg bg-background overflow-hidden hover:shadow-sm"
+    >
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="w-full flex items-center justify-between p-6 text-left font-semibold hover:bg-muted/50 transition-all duration-300"
+      >
+        <span>{question}</span>
+        <Plus
+          size={20}
+          className={`shrink-0 ml-4 transition-transform duration-300 ${
+            open ? "rotate-45 scale-110" : "hover:scale-110"
+          }`}
+        />
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div
+          className={`p-6 text-muted-foreground leading-relaxed transition-all duration-500 ${
+            open ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+          }`}
+        >
+          {answer}
+        </div>
+      </div>
+    </div>
   );
 }

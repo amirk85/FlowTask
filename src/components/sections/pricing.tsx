@@ -66,7 +66,7 @@ export function Pricing() {
           <div className="inline-flex items-center gap-4 p-1 bg-muted border border-border rounded-lg">
             <button
               onClick={() => setIsAnnual(false)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`btn px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 !isAnnual
                   ? "bg-background text-foreground"
                   : "text-muted-foreground hover:text-foreground"

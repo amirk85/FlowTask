@@ -39,17 +39,17 @@ export function SocialProof() {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-muted to-transparent z-10 pointer-events-none" />
 
-        <div className="marquee-container group">
-          <div className="marquee-content">
+        <div className="overflow-hidden">
+          <div className="flex animate-marquee whitespace-nowrap hover:animation-paused">
             {[...integrations, ...integrations].map((integration, index) => {
               const Icon = integration.icon;
               return (
                 <div
                   key={`${integration.name}-${index}`}
-                  className="marquee-item"
+                  className="group inline-flex flex-col items-center justify-center mx-10 min-w-max transition-colors duration-300"
                 >
-                  <Icon className="logo-icon w-10 h-10 md:w-12 md:h-12" />
-                  <span className="text-sm font-semibold mt-2">
+                  <Icon className="w-10 h-10 md:w-12 md:h-12 text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+                  <span className="text-sm font-semibold mt-2 text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                     {integration.name}
                   </span>
                 </div>
@@ -58,60 +58,6 @@ export function SocialProof() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .marquee-container {
-          display: flex;
-          overflow: hidden;
-          user-select: none;
-        }
-
-        .marquee-content {
-          display: flex;
-          animation: marquee 40s linear infinite;
-          will-change: transform;
-        }
-
-        .marquee-container:hover .marquee-content {
-          animation-play-state: paused;
-        }
-
-        .marquee-item {
-          flex-shrink: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 1.5rem 2rem;
-          transition: all 0.3s ease;
-          color: var(--color-muted-foreground);
-        }
-
-        .logo-icon {
-          opacity: 0.4;
-          transition: all 0.3s ease;
-        }
-
-        .marquee-item:hover .logo-icon {
-          opacity: 1;
-          transform: scale(1.15);
-        }
-
-        .marquee-item:hover {
-          color: var(--color-foreground);
-        }
-
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .marquee-content {
-            animation: none;
-          }
-        }
-      `}</style>
     </section>
   );
 }

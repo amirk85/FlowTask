@@ -11,10 +11,11 @@ export function FinalCTA() {
         </h2>
 
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-          Join 5,000+ teams. Start your 14-day free trial. No credit card required.
+          Join 5,000+ teams. Start your 14-day free trial. No credit card
+          required.
         </p>
 
-        <Link href="/signup" className="btn btn-primary text-base inline-flex">
+        <Link href="#" className="btn btn-primary text-base inline-flex">
           Start Free Trial
         </Link>
       </div>
