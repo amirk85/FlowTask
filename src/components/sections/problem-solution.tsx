@@ -1,7 +1,7 @@
 "use client";
 
 import { X, Check } from "lucide-react";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const problems = [
   "Context switching between 5+ tools daily",
@@ -24,9 +24,21 @@ export function ProblemSolution() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Generate random values once to avoid hydration mismatch
-  const chaosParticles = useMemo(
-    () =>
+  // Generate particles on client side only to avoid hydration mismatch
+  const [chaosParticles, setChaosParticles] = useState<
+    Array<{
+      left: number;
+      top: number;
+      animationDelay: number;
+      animationDuration: number;
+      rotation: number;
+      type: number;
+    }>
+  >([]);
+
+  useEffect(() => {
+    // Generate random particles only on client side
+    setChaosParticles(
       Array.from({ length: 12 }, (_, i) => ({
         left: Math.random() * 100,
         top: Math.random() * 100,
@@ -34,9 +46,9 @@ export function ProblemSolution() {
         animationDuration: 3 + Math.random() * 4,
         rotation: Math.random() * 360,
         type: i % 3,
-      })),
-    [],
-  );
+      }))
+    );
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
