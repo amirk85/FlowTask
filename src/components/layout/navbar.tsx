@@ -47,13 +47,7 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Link href="/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Log in
-          </Link>
-          <Link
-            href="/signup"
-            className="btn btn-primary px-1 py-2"
-          >
+          <Link href="#" className="btn btn-primary px-4 py-2">
             Start Free
           </Link>
         </div>
@@ -86,10 +80,7 @@ export function Navbar() {
             <Link href="/login" className="text-base font-medium">
               Log in
             </Link>
-            <Link
-              href="/signup"
-              className="text-base font-medium text-accent"
-            >
+            <Link href="/signup" className="text-base font-medium text-accent">
               Start Free
             </Link>
           </div>

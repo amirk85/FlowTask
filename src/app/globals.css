@@ -8,9 +8,13 @@
   --background: #ffffff;
   --foreground: #000000;
 
-  --accent: #ff5733;
-  --accent-hover: #e63e1c;
-  --accent-light: #fff1ee;
+  /* --accent: #ff6f4f; */
+  /* --accent-hover: #e63e1c; */
+  /* --accent-light: #fff1ee; */
+
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --accent-light: #f0fdfa;
 
   --gray-50: #fafafa;
   --gray-100: #f4f4f5;

@@ -14,7 +14,10 @@ const solutions = [
   { title: "Unified workspace", desc: "Tasks, docs, chat in one place" },
   { title: "Real-time visibility", desc: "See who's working on what, always" },
   { title: "Auto status updates", desc: "AI generates reports for you" },
-  { title: "Smart scheduling", desc: "Realistic deadlines, not wishful thinking" },
+  {
+    title: "Smart scheduling",
+    desc: "Realistic deadlines, not wishful thinking",
+  },
 ];
 
 export function ProblemSolution() {
@@ -28,7 +31,7 @@ export function ProblemSolution() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (sectionRef.current) {
@@ -39,20 +42,30 @@ export function ProblemSolution() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section border-y border-border bg-muted relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="section border-y border-border bg-muted relative overflow-hidden"
+    >
       {/* Subtle background texture */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}/>
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
       </div>
 
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Problem Side - Chaotic */}
-          <div className={`transition-all duration-1000 delay-100 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          <div
+            className={`transition-all duration-1000 delay-100 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             <div className="mb-8">
               <div className="inline-block px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 mb-4">
                 <span className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
@@ -64,13 +77,29 @@ export function ProblemSolution() {
                 <br />
                 <span className="text-gray-700 dark:text-gray-300 relative inline-block">
                   tool chaos
-                  <svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 10C40 2 80 8 120 4C160 0 180 6 198 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-gray-400"/>
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full"
+                    height="12"
+                    viewBox="0 0 200 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 10C40 2 80 8 120 4C160 0 180 6 198 8"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      className="text-gray-400"
+                    />
                   </svg>
                 </span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Most teams waste <span className="font-semibold text-foreground">15+ hours weekly</span> on tool sprawl and coordination overhead.
+                Most teams waste{" "}
+                <span className="font-semibold text-foreground">
+                  15+ hours weekly
+                </span>{" "}
+                on tool sprawl and coordination overhead.
               </p>
             </div>
 
@@ -94,14 +123,18 @@ export function ProblemSolution() {
                     {i % 3 === 0 ? (
                       <div
                         className="w-8 h-8 bg-gray-400/30 dark:bg-gray-600/40 rounded-lg blur-[1px]"
-                        style={{ transform: `rotate(${Math.random() * 360}deg)` }}
+                        style={{
+                          transform: `rotate(${Math.random() * 360}deg)`,
+                        }}
                       />
                     ) : i % 3 === 1 ? (
                       <div className="w-6 h-6 bg-gray-500/30 dark:bg-gray-500/40 rounded-full blur-[1px]" />
                     ) : (
                       <div
                         className="w-7 h-7 bg-gray-300/40 dark:bg-gray-700/40 rounded-sm blur-[1px]"
-                        style={{ transform: `rotate(${Math.random() * 360}deg)` }}
+                        style={{
+                          transform: `rotate(${Math.random() * 360}deg)`,
+                        }}
                       />
                     )}
                   </div>
@@ -109,15 +142,63 @@ export function ProblemSolution() {
               </div>
 
               {/* Connecting lines */}
-              <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 300 200">
-                <line x1="20%" y1="30%" x2="80%" y2="70%" stroke="currentColor" strokeWidth="1" className="text-gray-400 dark:text-gray-600" strokeDasharray="4 4">
-                  <animate attributeName="stroke-dashoffset" from="0" to="8" dur="1s" repeatCount="indefinite" />
+              <svg
+                className="absolute inset-0 w-full h-full opacity-30"
+                viewBox="0 0 300 200"
+              >
+                <line
+                  x1="20%"
+                  y1="30%"
+                  x2="80%"
+                  y2="70%"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-gray-400 dark:text-gray-600"
+                  strokeDasharray="4 4"
+                >
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    from="0"
+                    to="8"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  />
                 </line>
-                <line x1="70%" y1="20%" x2="30%" y2="80%" stroke="currentColor" strokeWidth="1" className="text-gray-400 dark:text-gray-600" strokeDasharray="4 4">
-                  <animate attributeName="stroke-dashoffset" from="0" to="8" dur="1.5s" repeatCount="indefinite" />
+                <line
+                  x1="70%"
+                  y1="20%"
+                  x2="30%"
+                  y2="80%"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-gray-400 dark:text-gray-600"
+                  strokeDasharray="4 4"
+                >
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    from="0"
+                    to="8"
+                    dur="1.5s"
+                    repeatCount="indefinite"
+                  />
                 </line>
-                <line x1="50%" y1="10%" x2="50%" y2="90%" stroke="currentColor" strokeWidth="1" className="text-gray-400 dark:text-gray-600" strokeDasharray="4 4">
-                  <animate attributeName="stroke-dashoffset" from="0" to="8" dur="2s" repeatCount="indefinite" />
+                <line
+                  x1="50%"
+                  y1="10%"
+                  x2="50%"
+                  y2="90%"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-gray-400 dark:text-gray-600"
+                  strokeDasharray="4 4"
+                >
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    from="0"
+                    to="8"
+                    dur="2s"
+                    repeatCount="indefinite"
+                  />
                 </line>
               </svg>
 
@@ -130,13 +211,15 @@ export function ProblemSolution() {
               {problems.map((item, i) => (
                 <div
                   key={i}
-                  className={`flex items-start gap-4 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm transition-all duration-500 hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-100/50 dark:hover:bg-gray-900/50 ${
-                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-                  }`}
+                  className={`flex items-start gap-4 p-4 rounded-xl bg-background/50 border border-border/50 backdrop-blur-sm`}
                   style={{ transitionDelay: `${300 + i * 100}ms` }}
                 >
                   <div className="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center shrink-0 mt-0.5">
-                    <X className="text-gray-600 dark:text-gray-400" size={14} strokeWidth={2.5} />
+                    <X
+                      className="text-gray-600 dark:text-gray-400"
+                      size={14}
+                      strokeWidth={2.5}
+                    />
                   </div>
                   <span className="text-base leading-relaxed">{item}</span>
                 </div>
@@ -145,9 +228,13 @@ export function ProblemSolution() {
           </div>
 
           {/* Solution Side - Organized */}
-          <div className={`transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          <div
+            className={`transition-all duration-1000 delay-300 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             <div className="mb-8">
               <div className="inline-block px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-4">
                 <span className="text-xs font-semibold text-accent uppercase tracking-wider">
@@ -162,7 +249,11 @@ export function ProblemSolution() {
                 </span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                FlowTask consolidates your workflow into one <span className="font-semibold text-foreground">fast, intelligent</span> platform.
+                FlowTask consolidates your workflow into one{" "}
+                <span className="font-semibold text-foreground">
+                  fast, intelligent
+                </span>{" "}
+                platform.
               </p>
             </div>
 
@@ -177,11 +268,13 @@ export function ProblemSolution() {
                     <div
                       key={i}
                       className={`aspect-square bg-gradient-to-br from-accent/20 to-accent-hover/20 rounded-lg border border-accent/30 transition-all duration-500 hover:scale-110 hover:bg-accent/30 ${
-                        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                        isVisible
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-75"
                       }`}
                       style={{
                         transitionDelay: `${600 + i * 50}ms`,
-                        boxShadow: '0 2px 8px rgba(255, 87, 51, 0.1)'
+                        boxShadow: "0 2px 8px rgba(255, 87, 51, 0.1)",
                       }}
                     >
                       <div className="w-full h-full rounded-lg bg-gradient-to-br from-white/50 to-transparent dark:from-white/10" />
@@ -191,10 +284,24 @@ export function ProblemSolution() {
               </div>
 
               {/* Flow arrows */}
-              <svg className="absolute inset-0 w-full h-full opacity-40 pointer-events-none" viewBox="0 0 300 200">
+              <svg
+                className="absolute inset-0 w-full h-full opacity-40 pointer-events-none"
+                viewBox="0 0 300 200"
+              >
                 <defs>
-                  <marker id="arrowhead-solution" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                    <polygon points="0 0, 10 3, 0 6" fill="currentColor" className="text-accent" />
+                  <marker
+                    id="arrowhead-solution"
+                    markerWidth="10"
+                    markerHeight="10"
+                    refX="9"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <polygon
+                      points="0 0, 10 3, 0 6"
+                      fill="currentColor"
+                      className="text-accent"
+                    />
                   </marker>
                 </defs>
                 <path
@@ -205,7 +312,13 @@ export function ProblemSolution() {
                   markerEnd="url(#arrowhead-solution)"
                   strokeDasharray="4 4"
                 >
-                  <animate attributeName="stroke-dashoffset" from="8" to="0" dur="1s" repeatCount="indefinite" />
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    from="8"
+                    to="0"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  />
                 </path>
               </svg>
 
@@ -218,16 +331,14 @@ export function ProblemSolution() {
               {solutions.map((item, i) => (
                 <div
                   key={i}
-                  className={`group flex items-start gap-4 p-5 border border-accent/20 bg-gradient-to-br from-background via-background to-accent-light/20 dark:to-accent/5 rounded-xl transition-all duration-500 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 hover:-translate-y-1 ${
-                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-                  }`}
+                  className={`group flex items-start gap-4 p-5 border border-accent/20 bg-gradient-to-br from-background via-background to-accent-light/20 dark:to-accent/5 rounded-xl`}
                   style={{ transitionDelay: `${500 + i * 100}ms` }}
                 >
-                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-accent-hover flex items-center justify-center shrink-0 mt-0.5 shadow-lg shadow-accent/20 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-accent-hover flex items-center justify-center shrink-0 mt-0.5 shadow-lg shadow-accent/20">
                     <Check size={14} className="text-white" strokeWidth={3} />
                   </div>
                   <div>
-                    <div className="font-semibold text-base mb-1.5 group-hover:text-accent transition-colors">
+                    <div className="font-semibold text-base mb-1.5">
                       {item.title}
                     </div>
                     <div className="text-sm text-muted-foreground leading-relaxed">
@@ -243,7 +354,8 @@ export function ProblemSolution() {
 
       <style jsx>{`
         @keyframes float-chaotic {
-          0%, 100% {
+          0%,
+          100% {
             transform: translate(0, 0) rotate(0deg) scale(1);
             opacity: 0.3;
           }
