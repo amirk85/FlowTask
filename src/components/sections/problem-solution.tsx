@@ -1,7 +1,7 @@
 "use client";
 
 import { X, Check } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 
 const problems = [
   "Context switching between 5+ tools daily",
@@ -23,6 +23,20 @@ const solutions = [
 export function ProblemSolution() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Generate random values once to avoid hydration mismatch
+  const chaosParticles = useMemo(
+    () =>
+      Array.from({ length: 12 }, (_, i) => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        animationDelay: Math.random() * 5,
+        animationDuration: 3 + Math.random() * 4,
+        rotation: Math.random() * 360,
+        type: i % 3,
+      })),
+    [],
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -109,31 +123,31 @@ export function ProblemSolution() {
 
               {/* Animated chaos particles */}
               <div className="absolute inset-0">
-                {[...Array(12)].map((_, i) => (
+                {chaosParticles.map((particle, i) => (
                   <div
                     key={i}
                     className="absolute animate-float-chaotic"
                     style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                      animationDelay: `${Math.random() * 5}s`,
-                      animationDuration: `${3 + Math.random() * 4}s`,
+                      left: `${particle.left}%`,
+                      top: `${particle.top}%`,
+                      animationDelay: `${particle.animationDelay}s`,
+                      animationDuration: `${particle.animationDuration}s`,
                     }}
                   >
-                    {i % 3 === 0 ? (
+                    {particle.type === 0 ? (
                       <div
                         className="w-8 h-8 bg-gray-400/30 dark:bg-gray-600/40 rounded-lg blur-[1px]"
                         style={{
-                          transform: `rotate(${Math.random() * 360}deg)`,
+                          transform: `rotate(${particle.rotation}deg)`,
                         }}
                       />
-                    ) : i % 3 === 1 ? (
+                    ) : particle.type === 1 ? (
                       <div className="w-6 h-6 bg-gray-500/30 dark:bg-gray-500/40 rounded-full blur-[1px]" />
                     ) : (
                       <div
                         className="w-7 h-7 bg-gray-300/40 dark:bg-gray-700/40 rounded-sm blur-[1px]"
                         style={{
-                          transform: `rotate(${Math.random() * 360}deg)`,
+                          transform: `rotate(${particle.rotation}deg)`,
                         }}
                       />
                     )}
