@@ -35,8 +35,7 @@ function FeatureCard({ feature, index, isVisible }: FeatureCardProps) {
         transitionDelay: `${index * 100}ms`,
       }}
     >
-      {/* Card */}
-      <div className="relative h-full p-8 rounded-2xl border border-border bg-background transition-all duration-500 group-hover:border-accent/40 group-hover:shadow-2xl group-hover:shadow-accent/10 group-hover:-translate-y-2">
+      <div className="relative h-full p-8 rounded-2xl border border-border bg-background transition-all duration-200 group-hover:border-accent/40 group-hover:shadow-2xl group-hover:shadow-accent/10 group-hover:-translate-y-2">
         {/* Gradient overlay on hover */}
         <div
           className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
@@ -152,14 +151,12 @@ export function Features() {
       ref={sectionRef}
       className="section relative overflow-hidden"
     >
-      {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container-custom relative z-10">
-        {/* Header */}
         <div
           className={`max-w-2xl mb-16 md:mb-20 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -186,7 +183,6 @@ export function Features() {
           ))}
         </div>
 
-        {/* Bottom decorative element */}
         <div
           className={`mt-16 md:mt-20 flex justify-center transition-all duration-1000 delay-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"

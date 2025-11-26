@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 
-const FAQs = [
+const faqs = [
   {
     question: "How does AI scheduling work?",
     answer:
@@ -42,7 +42,7 @@ export function FAQ() {
         </div>
 
         <div className="space-y-4">
-          {FAQs.map((faq, index) => (
+          {faqs.map((faq, index) => (
             <FAQCard key={index} question={faq.question} answer={faq.answer} />
           ))}
         </div>

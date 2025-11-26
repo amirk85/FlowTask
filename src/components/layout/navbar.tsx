@@ -77,10 +77,10 @@ export function Navbar() {
               </Link>
             ))}
             <div className="divider my-2" />
-            <Link href="/login" className="text-base font-medium">
+            <Link href="#" className="text-base font-medium">
               Log in
             </Link>
-            <Link href="/signup" className="text-base font-medium text-accent">
+            <Link href="#" className="text-base font-medium text-accent">
               Start Free
             </Link>
           </div>

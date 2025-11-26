@@ -133,13 +133,13 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border text-sm text-muted-foreground">
           <p>© 2025 FlowTask. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-foreground transition-colors">
+            <Link href="https://x.com/amirk85_" className="hover:text-foreground transition-colors">
               <FaXTwitter size={20} />
             </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
+            <Link href="https://github.com/amirk85" className="hover:text-foreground transition-colors">
               <FaGithub size={20} />
             </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
+            <Link href="https://www.linkedin.com/in/amirk85/" className="hover:text-foreground transition-colors">
               <FaLinkedin size={20} />
             </Link>
           </div>
