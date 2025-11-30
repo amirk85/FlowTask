@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navLinks = [
   { name: "Features", href: "#features" },
@@ -47,6 +48,7 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
+          <ThemeToggle />
           <Link href="#" className="btn btn-primary px-4 py-2">
             Start Free
           </Link>
@@ -76,6 +78,10 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <div className="flex items-center gap-3">
+              <span className="text-base font-medium text-muted-foreground">Theme</span>
+              <ThemeToggle />
+            </div>
             <div className="divider my-2" />
             <Link href="#" className="text-base font-medium">
               Log in
