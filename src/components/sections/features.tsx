@@ -158,7 +158,7 @@ export function Features() {
 
       <div className="container-custom relative z-10">
         <div
-          className={`max-w-2xl mb-16 md:mb-20 transition-all duration-1000 ${
+          className={`mb-16 md:mb-20 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
